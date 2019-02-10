@@ -12,6 +12,10 @@ class ViewController: UIViewController,XMLParserDelegate {
     
     var kanaList = [String]()
     var kana02 = [String]()
+    var Surface = ""
+    var judgeFlag = 0
+    var Furigana = ""
+    var furiganaList = [String]()
     
     @IBOutlet weak var textField: UITextField!
     
@@ -66,7 +70,23 @@ class ViewController: UIViewController,XMLParserDelegate {
         print("XML解析開始しました")
     }
     
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    // 解析中に要素の開始タグがあったときに実行されるメソッド
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        if  judgeFlag != 9{
+            switch elementName {
+            case "Surface":
+                judgeFlag = 1
+            case "Furigana":
+                judgeFlag = 2
+            case "SubWordList":
+                judgeFlag = 9
+            default:
+                break
+            }
+        }
+    }
+    
+    /*func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         for parsedStr in attributeDict {
         //    let exchangeRate = ExchangeRate()
             print("parsedStr\(parsedStr)")
@@ -77,7 +97,49 @@ class ViewController: UIViewController,XMLParserDelegate {
             }
         }
         print("kanaList\(kanaList)")
+    } */
+    
+    // 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        //print("要素:" + string)
+        
+        switch judgeFlag {
+        case 1:
+            Surface = string
+            judgeFlag = 3
+        case 2:
+            Furigana = string
+            judgeFlag = 4
+        default:
+            break
+        }
     }
+    
+    // 解析中に要素の終了タグがあったときに実行されるメソッド
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        //print("終了タグ:" + elementName)
+        if elementName == "Word" {
+            switch judgeFlag {
+            case 3:
+                furiganaList.append(Surface)
+            case 4:
+                furiganaList.append(Furigana)
+            case 9:
+                furiganaList.append(Furigana)
+                judgeFlag = 0
+            default:
+                break
+            }
+            judgeFlag = 0
+        }
+    }
+    
+    // XML解析終了時に実行されるメソッド
+    func parserDidEndDocument(_ parser: XMLParser) {
+        print("XML解析終了しました")
+        print("furiganaList\(furiganaList)")
+    }
+    
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         print(parseError)
