@@ -14,6 +14,7 @@
 		9072DD6C220F03910096BD3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9072DD6A220F03910096BD3F /* LaunchScreen.storyboard */; };
 		9072DD77220F03920096BD3F /* Creating_Ruby_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072DD76220F03920096BD3F /* Creating_Ruby_AppTests.swift */; };
 		9072DD82220F03920096BD3F /* Creating_Ruby_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072DD81220F03920096BD3F /* Creating_Ruby_AppUITests.swift */; };
+		9072DD90220F1B200096BD3F /* Results Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072DD8F220F1B200096BD3F /* Results Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		9072DD7D220F03920096BD3F /* Creating Ruby AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Creating Ruby AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9072DD81220F03920096BD3F /* Creating_Ruby_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creating_Ruby_AppUITests.swift; sourceTree = "<group>"; };
 		9072DD83220F03920096BD3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9072DD8F220F1B200096BD3F /* Results Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Results Page.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				9072DD61220F038D0096BD3F /* AppDelegate.swift */,
 				9072DD63220F038D0096BD3F /* ViewController.swift */,
 				9072DD65220F038D0096BD3F /* Main.storyboard */,
+				9072DD8F220F1B200096BD3F /* Results Page.swift */,
 				9072DD68220F03910096BD3F /* Assets.xcassets */,
 				9072DD6A220F03910096BD3F /* LaunchScreen.storyboard */,
 				9072DD6D220F03910096BD3F /* Info.plist */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9072DD90220F1B200096BD3F /* Results Page.swift in Sources */,
 				9072DD64220F038D0096BD3F /* ViewController.swift in Sources */,
 				9072DD62220F038D0096BD3F /* AppDelegate.swift in Sources */,
 			);
