@@ -18,7 +18,7 @@ class XmlAnalysis: UIViewController,XMLParserDelegate {
                        4 → 単語のよみ(Furigana)を変数(Furigana)に格納済みの場合
                        9 → 開始タグにSubWordListが現れた場合
                                             */
-    var Surface = "" //mainProcessing
+    var Surface = "" //単語の表記を一時的に格納する変数
     var Furigana = "" //ふりがなを一時的に格納する変数
     var furigana = "" //最終的に取得するふりがな
     var furiganaList = [String]() ////ふりがなを一時的に格納する配列
@@ -78,7 +78,6 @@ class XmlAnalysis: UIViewController,XMLParserDelegate {
                 furiganaList.append(Furigana)
             case 9:
                 furiganaList.append(Furigana)
-                judgeFlag = 0
             default:
                 break
             }
